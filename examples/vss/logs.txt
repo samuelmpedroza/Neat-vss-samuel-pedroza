@@ -1,0 +1,1 @@
+-bash: nohub: comando não encontrado
