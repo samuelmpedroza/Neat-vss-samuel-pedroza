@@ -221,7 +221,7 @@ def run():
                     best_action = output
                     observation, reward, done, info = env.step(best_action)
                     score += reward
-                    env.render()
+                    # env.render()
                     if done:
                         break
 
