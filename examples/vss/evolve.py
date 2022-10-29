@@ -231,7 +231,7 @@ def run():
                 best_scores.append(score)
                 avg_score = sum(best_scores) / len(best_scores)
                 print(k, score, avg_score)
-                if avg_score < 200:
+                if score < 0.1:
                     solved = False
                     break
 
