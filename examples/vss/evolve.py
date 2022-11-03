@@ -231,10 +231,16 @@ def run():
                 best_scores.append(score)
                 avg_score = sum(best_scores) / len(best_scores)
                 print(k, score, avg_score)
-                if score < 0.1:
+                if score < - 0.1:
                     solved = False
                     break
+            for n, g in enumerate(best_genomes):
+                name = 'winner'.format(n)
+                with open(name + '.pickle', 'wb') as f:
+                     pickle.dump(g, f)
 
+                visualize.draw_net(config, g, view=False, filename=name + "-net.gv")
+                visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)         
             if solved:
                 print("Solved.")
 
@@ -248,6 +254,7 @@ def run():
                     visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)
 
                 break
+
         except KeyboardInterrupt:
             print("User break.")
             break
