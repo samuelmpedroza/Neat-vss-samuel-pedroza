@@ -1,0 +1,636 @@
+nohup: ignorando entrada
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-1.6799e-10)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-1.6798e-10)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-1.6795e-10)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-1.6798e-10)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-1.6798e-10)
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+
+ODE Message 3: LCP internal error, s <= 0 (s=-0.0000e+00)
+Environment initialized
+action space: Box([-1. -1.], [1. 1.], (2,), float32)
+observation space: Box([-1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2
+ -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2
+ -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2], [1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2
+ 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2
+ 1.2 1.2 1.2 1.2], (40,), float32)
+
+ ****** Running generation 0 ****** 
+
+network creation time 0.06237912178039551
+Score range [-116.800, 106.026]
+simulation run time 1811.950888633728
+Evaluating 700 test episodes
+final fitness compute time 2118.049197435379
+
+Population's average fitness: -963.76188 stdev: 35.12194
+Best fitness: -694.71178 - size: (2, 40) - species 1 - id 91
+Average adjusted fitness: 0.193
+Mean genetic distance 2.757, standard deviation 0.492
+Population of 700 members in 4 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    0   213   -694.7    0.197     0
+     2    0   199   -789.6    0.184     0
+     3    0   115   -879.4    0.190     0
+     4    0   173   -852.0    0.202     0
+Total extinctions: 0
+Generation time: 3935.292 sec
+Saving checkpoint to neat-checkpoint-0
+
+ ****** Running generation 1 ****** 
+
+network creation time 0.08161664009094238
+Evaluating 700 test episodes
+final fitness compute time 2077.932716846466
+
+Population's average fitness: -922.02582 stdev: 40.90983
+Best fitness: -694.71178 - size: (2, 40) - species 1 - id 91
+Average adjusted fitness: 0.437
+Mean genetic distance 2.704, standard deviation 0.475
+Population of 701 members in 4 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    1   215   -694.7    0.430     1
+     2    1   152   -789.6    0.431     1
+     3    1   159   -797.9    0.432     0
+     4    1   175   -701.2    0.457     0
+Total extinctions: 0
+Generation time: 2083.037 sec (3009.165 average)
+Saving checkpoint to neat-checkpoint-1
+
+ ****** Running generation 2 ****** 
+
+network creation time 0.09519124031066895
+Evaluating 700 test episodes
+final fitness compute time 2102.543706893921
+
+Population's average fitness: -889.86249 stdev: 46.83272
+Best fitness: -694.71178 - size: (2, 40) - species 1 - id 91
+Average adjusted fitness: 0.375
+Mean genetic distance 2.632, standard deviation 0.458
+Population of 700 members in 4 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    2   110   -694.7    0.389     2
+     2    2   254   -733.9    0.354     0
+     3    2   183   -753.9    0.354     0
+     4    2   153   -701.2    0.405     1
+Total extinctions: 0
+Generation time: 2107.651 sec (2708.660 average)
+Saving checkpoint to neat-checkpoint-2
+
+ ****** Running generation 3 ****** 
+
+network creation time 0.08107662200927734
+Evaluating 700 test episodes
+final fitness compute time 2087.6576883792877
+
+Population's average fitness: -863.79562 stdev: 67.47844
+Best fitness: -0.39748 - size: (3, 40) - species 3 - id 2095
+Average adjusted fitness: 0.205
+Mean genetic distance 2.619, standard deviation 0.436
+Population of 700 members in 4 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    3   219   -689.5    0.204     0
+     2    3    88   -535.1    0.201     0
+     3    3   221     -0.4    0.200     0
+     4    3   172   -701.2    0.214     2
+Total extinctions: 0
+Generation time: 2092.743 sec (2554.681 average)
+Saving checkpoint to neat-checkpoint-3
+
+ ****** Running generation 4 ****** 
+
+network creation time 0.09389090538024902
+Evaluating 700 test episodes
+
+ODE Message 3: LCP internal error, s <= 0 (s=0.0000e+00)
+final fitness compute time 2092.0777776241302
+
+Population's average fitness: -830.92792 stdev: 98.19306
+Best fitness: -0.39748 - size: (3, 40) - species 3 - id 2095
+Average adjusted fitness: 0.209
+Mean genetic distance 2.555, standard deviation 0.438
+Population of 699 members in 4 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    4   241     -0.4    0.210     0
+     2    4   166   -679.3    0.188     1
+     3    4   210     -0.4    0.217     1
+     4    4    82   -535.1    0.221     0
+Total extinctions: 0
+Generation time: 2097.342 sec (2463.213 average)
+Saving checkpoint to neat-checkpoint-4
+Average mean fitness over last 5 generations: -894.0747455932536
+Average min fitness over last 5 generations: -1054.9949044078714
+0 -18.41249529182088 -18.41249529182088
+Traceback (most recent call last):
+  File "evolve.py", line 266, in <module>
+    run()
+  File "evolve.py", line 243, in run
+    visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)         
+  File "/media/work/samuelpedroza/Neat-vss-samuel-pedroza/examples/vss/visualize.py", line 74, in draw_net
+    genome = genome.get_pruned_copy(config.genome_config)
+AttributeError: 'LanderGenome' object has no attribute 'get_pruned_copy'
