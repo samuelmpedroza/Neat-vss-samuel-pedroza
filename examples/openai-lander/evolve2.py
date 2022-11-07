@@ -15,11 +15,10 @@ import numpy as np
 
 import neat
 import visualize
-import rsoccer_gym
 
 NUM_CORES = 8
 
-env = gym.make('VSS-v0')
+env = gym.make('LunarLander-v2')
 
 print("action space: {0!r}".format(env.action_space))
 print("observation space: {0!r}".format(env.observation_space))
@@ -64,8 +63,8 @@ def compute_fitness(genome, net, episodes, min_reward, max_reward):
         dr = np.clip(dr, -1.0, 1.0)
 
         for row, dr in zip(data, dr):
-            observation = row[:40]
-            action = int(row[40])
+            observation = row[:8]
+            action = int(row[8])
             output = net.activate(observation)
             reward_error.append(float((output[action] - dr) ** 2))
 
@@ -96,7 +95,8 @@ class PooledErrorCompute(object):
                     action = env.action_space.sample()
                 else:
                     output = net.activate(observation)
-                    action =  output
+                    action = np.argmax(output)
+
                 observation, reward, done, info = env.step(action)
                 data.append(np.hstack((observation, action, reward)))
 
@@ -156,59 +156,48 @@ class PooledErrorCompute(object):
 def run():
     # Load the config file, which is assumed to live in
     # the same directory as this script.
-    # local_dir = os.path.dirname(__file__)
-    # config_path = os.path.join(local_dir, 'config')
-    # config = neat.Config(LanderGenome, neat.DefaultReproduction,
-    #                      neat.DefaultSpeciesSet, neat.DefaultStagnation,
-    #                      config_path)
+    local_dir = os.path.dirname(__file__)
+    config_path = os.path.join(local_dir, 'config')
+    config = neat.Config(LanderGenome, neat.DefaultReproduction,
+                         neat.DefaultSpeciesSet, neat.DefaultStagnation,
+                         config_path)
 
-    # pop = neat.Population(config)
-    # stats = neat.StatisticsReporter()
-    # pop.add_reporter(stats)
-    # pop.add_reporter(neat.StdOutReporter(True))
-    # # Checkpoint every 25 generations or 900 seconds.
-    # pop.add_reporter(neat.Checkpointer(25, 900))
+    pop = neat.Population(config)
+    stats = neat.StatisticsReporter()
+    pop.add_reporter(stats)
+    pop.add_reporter(neat.StdOutReporter(True))
+    # Checkpoint every 25 generations or 900 seconds.
+    pop.add_reporter(neat.Checkpointer(25, 900))
 
     # Run until the winner from a generation is able to solve the environment
     # or the user interrupts the process.
     ec = PooledErrorCompute(NUM_CORES)
     while 1:
         try:
-            # gen_best = pop.run(ec.evaluate_genomes, 5)
+            gen_best = pop.run(ec.evaluate_genomes, 5)
 
-            # # print(gen_best)
+            # print(gen_best)
 
-            # visualize.plot_stats(stats, ylog=False, view=False, filename="fitness.svg")
+            visualize.plot_stats(stats, ylog=False, view=False, filename="fitness.svg")
 
-            # plt.plot(ec.episode_score, 'g-', label='score')
-            # plt.plot(ec.episode_length, 'b-', label='length')
-            # plt.grid()
-            # plt.legend(loc='best')
-            # plt.savefig("scores.svg")
-            # plt.close()
+            plt.plot(ec.episode_score, 'g-', label='score')
+            plt.plot(ec.episode_length, 'b-', label='length')
+            plt.grid()
+            plt.legend(loc='best')
+            plt.savefig("scores.svg")
+            plt.close()
 
-            # mfs = sum(stats.get_fitness_mean()[-5:]) / 5.0
-            # print("Average mean fitness over last 5 generations: {0}".format(mfs))
+            mfs = sum(stats.get_fitness_mean()[-5:]) / 5.0
+            print("Average mean fitness over last 5 generations: {0}".format(mfs))
 
-            # mfs = sum(stats.get_fitness_stat(min)[-5:]) / 5.0
-            # print("Average min fitness over last 5 generations: {0}".format(mfs))
+            mfs = sum(stats.get_fitness_stat(min)[-5:]) / 5.0
+            print("Average min fitness over last 5 generations: {0}".format(mfs))
 
-            # # Use the best genomes seen so far as an ensemble-ish control system.
-            # best_genomes = stats.best_unique_genomes(3)
-            # best_networks = []
-            # for g in best_genomes:
-            #     best_networks.append(neat.nn.FeedForwardNetwork.create(g, config))
-            local_dir = os.path.dirname(__file__)
-            config_path = os.path.join(local_dir, 'config')
-            config = neat.Config(LanderGenome, neat.DefaultReproduction,
-                                 neat.DefaultSpeciesSet, neat.DefaultStagnation,
-                                 config_path)
-            with open('winner.pickle', "rb") as f:
-                genome = pickle.load(f)
-            # genomes = [(1, genome)]
-            print('genomes', genome)
+            # Use the best genomes seen so far as an ensemble-ish control system.
+            best_genomes = stats.best_unique_genomes(3)
             best_networks = []
-            best_networks.append(neat.nn.FeedForwardNetwork.create(genome, config))
+            for g in best_genomes:
+                best_networks.append(neat.nn.FeedForwardNetwork.create(g, config))
 
             solved = True
             best_scores = []
@@ -220,21 +209,16 @@ def run():
                     step += 1
                     # Use the total reward estimates from all five networks to
                     # determine the best action given the current state.
-                    # votes = np.zeros((4,))
-                    count = 0
+                    votes = np.zeros((4,))
                     for n in best_networks:
                         output = n.activate(observation)
-                        # print("OUTPUT: ", output)
-                        count += 1
-                        # votes[np.argmax(output)] += 1
-                    # print('VOTES: ',votes)
-                    # best_action = np.argmax(votes)
-                    best_action = output
+                        votes[np.argmax(output)] += 1
+
+                    best_action = np.argmax(votes)
                     observation, reward, done, info = env.step(best_action)
                     score += reward
                     env.render()
                     if done:
-                        print('score', score)
                         break
 
                 ec.episode_score.append(score)
@@ -243,27 +227,23 @@ def run():
                 best_scores.append(score)
                 avg_score = sum(best_scores) / len(best_scores)
                 print(k, score, avg_score)
-                if score < -0.1:
+                if avg_score < 200:
                     solved = False
                     break
-            # for n, g in enumerate(best_genomes):
-            #     name = 'winner'.format(n)
-            #     with open(name + '.pickle', 'wb') as f:
-            #          pickle.dump(g, f)         
+
             if solved:
                 print("Solved.")
 
-            #     # Save the winners.
-            #     for n, g in enumerate(best_genomes):
-            #         name = 'winner-{0}'.format(n)
-            #         with open(name + '.pickle', 'wb') as f:
-            #             pickle.dump(g, f)
+                # Save the winners.
+                for n, g in enumerate(best_genomes):
+                    name = 'winner-{0}'.format(n)
+                    with open(name + '.pickle', 'wb') as f:
+                        pickle.dump(g, f)
 
-            #         visualize.draw_net(config, g, view=False, filename=name + "-net.gv")
-            #         visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)
+                    visualize.draw_net(config, g, view=False, filename=name + "-net.gv")
+                    visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)
 
-            #     break
-
+                break
         except KeyboardInterrupt:
             print("User break.")
             break
@@ -272,15 +252,4 @@ def run():
 
 
 if __name__ == '__main__':
-    # local_dir = os.path.dirname(__file__)
-    # config_path = os.path.join(local_dir, 'config')
-    # config = neat.Config(LanderGenome, neat.DefaultReproduction,
-    #                      neat.DefaultSpeciesSet, neat.DefaultStagnation,
-    #                      config_path)
-    # with open('winner.pickle', "rb") as f:
-    #     genome = pickle.load(f)
-    # # genomes = [(1, genome)]
-    # print('genomes', genome)
-    # visualize.draw_net(config, genome, view=False, filename="draw-net.gv")
-    # visualize.draw_net(config, genome, view=False, filename="draw-net-pruned.gv", prune_unused=True)
     run()
