@@ -237,10 +237,7 @@ def run():
             for n, g in enumerate(best_genomes):
                 name = 'winner'.format(n)
                 with open(name + '.pickle', 'wb') as f:
-                     pickle.dump(g, f)
-
-                visualize.draw_net(config, g, view=False, filename=name + "-net.gv")
-                visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)         
+                     pickle.dump(g, f)         
             if solved:
                 print("Solved.")
 
