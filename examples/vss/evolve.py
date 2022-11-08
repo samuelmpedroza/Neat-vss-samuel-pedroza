@@ -13,9 +13,14 @@ import gym.wrappers
 import matplotlib.pyplot as plt
 import numpy as np
 
+import sys
+
+sys.path.insert(1,'/home/samuel3499/TCC_Samuel_Pedroza/rSoccer/rsoccer_gym')
+
 import neat
 import visualize
 import rsoccer_gym
+
 
 NUM_CORES = 8
 
@@ -206,7 +211,6 @@ def run():
             with open('winner.pickle', "rb") as f:
                 genome = pickle.load(f)
             # genomes = [(1, genome)]
-            print('genomes', genome)
             best_networks = []
             best_networks.append(neat.nn.FeedForwardNetwork.create(genome, config))
 
