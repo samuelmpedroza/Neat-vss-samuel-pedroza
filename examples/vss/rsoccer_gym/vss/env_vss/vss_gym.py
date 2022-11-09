@@ -185,7 +185,6 @@ class VSSEnv(VSSBaseEnv):
                     w_ball_grad * grad_ball_potential + \
                     w_energy * energy_penalty + \
                     w_stopped * stoped_penalty
-
                 self.reward_shaping_total['move'] += w_move * move_reward
                 self.reward_shaping_total['ball_grad'] += w_ball_grad \
                     * grad_ball_potential
@@ -322,7 +321,7 @@ class VSSEnv(VSSBaseEnv):
         robot_speed = abs(robot_vel[0] - last_robot_vel[0]) + abs(robot_vel[1] - last_robot_vel[1])
         stopped = 0
         if robot_speed == 0:
-            stopped = -5
+            stopped = -44
         
         return stopped
 
