@@ -322,7 +322,7 @@ class VSSEnv(VSSBaseEnv):
         robot_speed = abs(robot_vel[0] - last_robot_vel[0]) + abs(robot_vel[1] - last_robot_vel[1])
         stopped = 0
         if robot_speed == 0:
-            stopped = -5
+            stopped = -100
         
         return stopped
 
