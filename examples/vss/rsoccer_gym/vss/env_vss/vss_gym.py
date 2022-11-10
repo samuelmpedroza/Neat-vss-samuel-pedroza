@@ -332,4 +332,4 @@ class VSSEnv(VSSBaseEnv):
         en_penalty_1 = abs(self.sent_commands[0].v_wheel0)
         en_penalty_2 = abs(self.sent_commands[0].v_wheel1)
         energy_penalty = - (en_penalty_1 + en_penalty_2)
-        return energy_penalty
+        return 0
