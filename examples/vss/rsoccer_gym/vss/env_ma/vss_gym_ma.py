@@ -295,9 +295,12 @@ class VSSMAEnv(VSSBaseEnv):
         length_cm = self.field.length * 100
         half_lenght = (self.field.length / 2.0)\
             + self.field.goal_depth
+        
+        #half_length = 75
 
         # distance to defence
         dx_d = (half_lenght + self.frame.ball.x) * 100
+        #dx_d 
         # distance to attack
         dx_a = (half_lenght - self.frame.ball.x) * 100
         dy = (self.frame.ball.y) * 100

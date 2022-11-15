@@ -47,6 +47,10 @@ class VSSBaseEnv(gym.Env):
         # Initiate 
         self.frame: Frame = None
         self.last_frame: Frame = None
+        self.last_one_frame: Frame = None
+        self.last_two_frame: Frame = None
+        self.last_three_frame: Frame = None
+        self.last_four_frame: Frame = None
         self.view = None
         self.steps = 0
         self.sent_commands = None
@@ -55,14 +59,21 @@ class VSSBaseEnv(gym.Env):
         self.steps += 1
         # Join agent action with environment actions
         commands: List[Robot] = self._get_commands(action)
+
         # Send command to simulator
         self.rsim.send_commands(commands)
         self.sent_commands = commands
 
         # Get Frame from simulator
+        self.last_four_frame = self.last_three_frame
+        self.last_three_frame = self.last_two_frame
+        self.last_two_frame = self.last_one_frame
+        self.last_one_frame = self.last_frame
         self.last_frame = self.frame
         self.frame = self.rsim.get_frame()
-
+        self.frame.robots_blue[0].v_wheel0 = action[0]
+        self.frame.robots_blue[0].v_wheel1 = action[1]
+        
         # Calculate environment observation, reward and done condition
         observation = self._frame_to_observations()
         reward, done = self._calculate_reward_and_done()
@@ -72,6 +83,10 @@ class VSSBaseEnv(gym.Env):
     def reset(self):
         self.steps = 0
         self.last_frame = None
+        self.last_four_frame = None
+        self.last_three_frame = None
+        self.last_two_frame = None
+        self.last_one_frame = None
         self.sent_commands = None
 
         # Close render window

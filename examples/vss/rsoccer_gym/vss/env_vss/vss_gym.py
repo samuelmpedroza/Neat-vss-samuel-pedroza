@@ -312,19 +312,55 @@ class VSSEnv(VSSBaseEnv):
         Cosine between the robot vel vector and the vector robot -> ball.
         This indicates rather the robot is moving towards the ball or not.
         '''
+        if(self.last_four_frame is not None):
+            robot_vel = np.array([self.frame.robots_blue[0].v_wheel0,
+                              self.frame.robots_blue[0].v_wheel1])
 
-        robot_vel = np.array([self.frame.robots_blue[0].v_x,
-                              self.frame.robots_blue[0].v_y])
+            last_robot_vel = np.array([self.last_frame.robots_blue[0].v_wheel0,
+                              self.last_frame.robots_blue[0].v_wheel1])
         
-        last_robot_vel = np.array([self.last_frame.robots_blue[0].v_x,
-                              self.last_frame.robots_blue[0].v_y])
+            last_one_robot_vel = np.array([self.last_one_frame.robots_blue[0].v_wheel0,
+                              self.last_one_frame.robots_blue[0].v_wheel1])
         
-        robot_speed = abs(robot_vel[0] - last_robot_vel[0]) + abs(robot_vel[1] - last_robot_vel[1])
-        stopped = 0
-        if robot_speed == 0:
-            stopped = -100
+            last_two_robot_vel = np.array([self.last_two_frame.robots_blue[0].v_wheel0,
+                              self.last_two_frame.robots_blue[0].v_wheel1])
         
-        return stopped
+            last_three_robot_vel = np.array([self.last_three_frame.robots_blue[0].v_wheel0,
+                              self.last_three_frame.robots_blue[0].v_wheel1])
+        
+            last_four_robot_vel = np.array([self.last_four_frame.robots_blue[0].v_wheel0,
+                              self.last_four_frame.robots_blue[0].v_wheel1])
+
+            xSpeedArray = [robot_vel[0], 
+                last_robot_vel[0], 
+                last_one_robot_vel[0], 
+                last_two_robot_vel[0], 
+                last_three_robot_vel[0],
+                last_four_robot_vel[0]
+                ]
+
+            ySpeedArray = [robot_vel[1], 
+                last_robot_vel[1], 
+                last_one_robot_vel[1], 
+                last_two_robot_vel[1], 
+                last_three_robot_vel[1],
+                last_four_robot_vel[1]
+                ]
+        
+            stopped = 0
+            # print('nova função', self._check(xSpeedArray, 0))
+            checkX = all(x == 0 for x in xSpeedArray)
+            checkY = all(x == 0 for x in ySpeedArray)
+            if(checkX or checkY):
+                stopped = -100
+
+            return stopped
+        else: 
+            return 0
+        # robot_speed = abs(robot_vel[0] - last_robot_vel[0]) + abs(robot_vel[1] - last_robot_vel[1])
+        
+        # if robot_speed == 0:
+        
 
     def __energy_penalty(self):
         '''Calculates the energy penalty'''
