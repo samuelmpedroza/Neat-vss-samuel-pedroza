@@ -283,7 +283,7 @@ class VSSEnv(VSSBaseEnv):
                                           -5.0, 5.0)
 
         self.previous_ball_potential = ball_potential
-
+        grad_ball_potential = 0
         return grad_ball_potential
 
     def __move_reward(self):
@@ -304,6 +304,7 @@ class VSSEnv(VSSBaseEnv):
         move_reward = np.dot(robot_ball, robot_vel)
 
         move_reward = np.clip(move_reward / 0.4, -5.0, 5.0)
+        
         return move_reward
 
     def __stopped_penalty(self):
@@ -354,6 +355,7 @@ class VSSEnv(VSSBaseEnv):
             if(checkX or checkY):
                 stopped = -100
 
+            stopped = 0
             return stopped
         else: 
             return 0
