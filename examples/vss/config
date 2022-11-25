@@ -41,8 +41,8 @@ response_mutate_power   = 0.01
 response_max_value      = 1
 response_min_value      = -1
 
-weight_max_value        = 2
-weight_min_value        = -2
+weight_max_value        = 1
+weight_min_value        = -1
 weight_init_mean        = 0.0
 weight_init_stdev       = 1.0
 weight_mutate_rate      = 0.8
@@ -55,8 +55,8 @@ enabled_mutate_rate     = 0.01
 compatibility_threshold = 3.0
 
 [DefaultStagnation]
-species_fitness_func = max
-max_stagnation       = 15
+species_fitness_func = mean
+max_stagnation       = 50
 species_elitism      = 0
 
 [DefaultReproduction]
