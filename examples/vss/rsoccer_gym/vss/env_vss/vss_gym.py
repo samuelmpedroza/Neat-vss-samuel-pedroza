@@ -153,8 +153,8 @@ class VSSEnv(VSSBaseEnv):
     def _calculate_reward_and_done(self):
         reward = 0
         goal = False
-        wDistanceToBall = 1000
         wBallDistanceToOpponentGoal = 100000
+        ballDistanceToOpponentGoal = 0
         if self.reward_shaping_total is None:
             self.reward_shaping_total = {'goal_score': 0, 'move': 0,
                                          'ball_grad': 0, 'energy': 0,
@@ -394,7 +394,6 @@ class VSSEnv(VSSBaseEnv):
         for j in distances:
             if j < first:
                 result = 0
-        print('result', result)
         return result
                 
     def distanceToBall(self, robot):
