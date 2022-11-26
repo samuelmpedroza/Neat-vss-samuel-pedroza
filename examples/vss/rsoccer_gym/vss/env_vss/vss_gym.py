@@ -89,7 +89,7 @@ class VSSEnv(VSSBaseEnv):
 
     def step(self, action):
         observation, reward, done, _ = super().step(action)
-        if(done):
+        if(done or self.steps == 1199):
             reward = self.kicks * 2 * 10000 + self.distancePoints * 1000
         return observation, reward, done, self.reward_shaping_total
 
