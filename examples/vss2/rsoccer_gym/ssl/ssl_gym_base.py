@@ -10,47 +10,41 @@ from typing import Dict, List, Optional
 
 import gym
 import numpy as np
-from rsoccer_gym.Entities import Frame, Robot
-from rsoccer_gym.Simulators.rsim import RSimVSS
-from rsoccer_gym.Simulators.fira import Fira
+from rsoccer_gym.Entities import Frame, Robot, Field
+from rsoccer_gym.Simulators.rsim import RSimSSL
 
 
-
-class VSSBaseEnv(gym.Env):
+class SSLBaseEnv(gym.Env):
     metadata = {
         'render.modes': ['human', 'rgb_array'],
     }
     NORM_BOUNDS = 1.2
-    
+
     def __init__(self, field_type: int,
                  n_robots_blue: int, n_robots_yellow: int, time_step: float):
         # Initialize Simulator
-        print('INICIANDO EXECUÇÃO DE PACOTE MODIFICADO')
         self.time_step = time_step
-        self.rsim = RSimVSS(field_type=field_type,
-                                      n_robots_blue=n_robots_blue,
-                                      n_robots_yellow=n_robots_yellow,
-                                      time_step_ms=int(self.time_step*1000))
-        self.n_robots_blue = n_robots_blue
-        self.n_robots_yellow = n_robots_yellow
-
+        self.rsim = RSimSSL(field_type=field_type,
+                            n_robots_blue=n_robots_blue,
+                            n_robots_yellow=n_robots_yellow,
+                            time_step_ms=int(self.time_step*1000))
+        self.n_robots_blue: int = n_robots_blue
+        self.n_robots_yellow: int = n_robots_yellow
+        
         # Get field dimensions
-        self.field_type = field_type
-        self.field = self.rsim.get_field_params()
+        self.field_type: int = field_type
+        self.field: Field = self.rsim.get_field_params()
         self.max_pos = max(self.field.width / 2, (self.field.length / 2) 
-                                + self.field.penalty_length)
+                                + self.field.penalty_length
+                                )
         max_wheel_rad_s = (self.field.rbt_motor_max_rpm / 60) * 2 * np.pi
         self.max_v = max_wheel_rad_s * self.field.rbt_wheel_radius
-        # 0.04 = robot radius (0.0375) + wheel thicknees (0.0025)
-        self.max_w = np.rad2deg(self.max_v / 0.04)
-        
+        # 0.04 = robot radius (0.09) + wheel thicknees (0.005)
+        self.max_w = np.rad2deg(self.max_v / 0.095)
+
         # Initiate 
         self.frame: Frame = None
         self.last_frame: Frame = None
-        self.last_one_frame: Frame = None
-        self.last_two_frame: Frame = None
-        self.last_three_frame: Frame = None
-        self.last_four_frame: Frame = None
         self.view = None
         self.steps = 0
         self.sent_commands = None
@@ -59,33 +53,23 @@ class VSSBaseEnv(gym.Env):
         self.steps += 1
         # Join agent action with environment actions
         commands: List[Robot] = self._get_commands(action)
-
         # Send command to simulator
         self.rsim.send_commands(commands)
         self.sent_commands = commands
 
         # Get Frame from simulator
-        self.last_four_frame = self.last_three_frame
-        self.last_three_frame = self.last_two_frame
-        self.last_two_frame = self.last_one_frame
-        self.last_one_frame = self.last_frame
         self.last_frame = self.frame
         self.frame = self.rsim.get_frame()
-        self.frame.robots_blue[0].v_wheel0 = action[0]
-        self.frame.robots_blue[0].v_wheel1 = action[1]
-        
+
         # Calculate environment observation, reward and done condition
         observation = self._frame_to_observations()
         reward, done = self._calculate_reward_and_done()
+
         return observation, reward, done, {}
 
     def reset(self):
         self.steps = 0
         self.last_frame = None
-        self.last_four_frame = None
-        self.last_three_frame = None
-        self.last_two_frame = None
-        self.last_one_frame = None
         self.sent_commands = None
 
         # Close render window
@@ -100,7 +84,7 @@ class VSSBaseEnv(gym.Env):
 
         return self._frame_to_observations()
 
-    def render(self, mode='human') -> None:
+    def render(self, mode: Optional = 'human') -> None:
         '''
         Renders the game depending on 
         ball's and players' positions.
@@ -119,10 +103,9 @@ class VSSBaseEnv(gym.Env):
             self.view = RCGymRender(self.n_robots_blue,
                                  self.n_robots_yellow,
                                  self.field,
-                                 simulator='vss')
+                                 simulator='ssl')
 
         return self.view.render_frame(self.frame, return_rgb_array=mode == "rgb_array")
-        
 
     def close(self):
         self.rsim.stop()
@@ -142,7 +125,7 @@ class VSSBaseEnv(gym.Env):
     def _get_initial_positions_frame(self) -> Frame:
         '''returns frame with robots initial positions'''
         raise NotImplementedError
-
+    
     def norm_pos(self, pos):
         return np.clip(
             pos / self.max_pos,
@@ -163,11 +146,3 @@ class VSSBaseEnv(gym.Env):
             -self.NORM_BOUNDS,
             self.NORM_BOUNDS
         )
-
-
-class VSSBaseFIRAEnv(VSSBaseEnv):
-
-    def __init__(self, field_type: int,
-                 n_robots_blue: int, n_robots_yellow: int, time_step: float):
-        super().__init__(field_type, n_robots_blue, n_robots_yellow, time_step)
-        self.rsim = Fira()

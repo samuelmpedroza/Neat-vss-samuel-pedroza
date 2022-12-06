@@ -8,7 +8,7 @@ fitness_criterion     = max
 fitness_threshold     = 1000000000
 reset_on_extinction   = 0
 
-[LanderGenome]
+[DefaultGenome]
 num_inputs              = 40
 num_hidden              = 0
 num_outputs             = 2
@@ -55,7 +55,7 @@ enabled_mutate_rate     = 0.01
 compatibility_threshold = 3.0
 
 [DefaultStagnation]
-species_fitness_func = max
+species_fitness_func = mean
 max_stagnation       = 100
 species_elitism      = 0
 
