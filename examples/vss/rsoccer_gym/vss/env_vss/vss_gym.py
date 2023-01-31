@@ -179,28 +179,20 @@ class VSSEnv(VSSBaseEnv):
         
         reward = ballDistanceToOpponentGoal * wBallDistanceToOpponentGoal
 
-
-        #     if self.last_frame is not None:
-        #         # Calculate ball potential
-        #         grad_ball_potential = self.__ball_grad()
-        #         # Calculate Move ball
-        #         move_reward = self.__move_reward()
-        #         # Calculate Energy penalty
-        #         energy_penalty = self.__energy_penalty()
-        #         # Check if robot is stopped
-        #         stoped_penalty = self.__stopped_penalty()
-
-        #         reward = w_move * move_reward + \
-        #             w_ball_grad * grad_ball_potential + \
-        #             w_energy * energy_penalty + \
-        #             w_stopped * stoped_penalty
-
-        #         self.reward_shaping_total['move'] += w_move * move_reward
-        #         self.reward_shaping_total['ball_grad'] += w_ball_grad \
-        #             * grad_ball_potential
-        #         self.reward_shaping_total['energy'] += w_energy \
-        #             * energy_penalty
-
+        ball = self.frame.ball
+        robot = self.frame.robots_blue[0]
+        
+        dist_robot_ball = np.linalg.norm(
+            np.array([ball.x, ball.y]) 
+            - np.array([robot.x, robot.y])
+        )
+        
+        # Check if robot is less than 0.2m from ball
+        if dist_robot_ball < 0.2:
+            reward = 1
+        goal = False
+        if reward == 1:
+            goal = True
         return reward, goal
 
     def _get_initial_positions_frame(self):
