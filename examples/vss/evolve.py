@@ -230,7 +230,7 @@ def run():
 
                 best_scores.append(score)
                 avg_score = sum(best_scores) / len(best_scores)
-                print(k, score, avg_score)
+   
                 if score < -0.1:
                     solved = False
                     break
@@ -248,7 +248,7 @@ def run():
                         pickle.dump(g, f)
 
                     visualize.draw_net(config, g, view=False, filename=name + "-net.gv")
-                    visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)
+                    # visualize.draw_net(config, g, view=False, filename=name + "-net-pruned.gv", prune_unused=True)
 
                 break
 
