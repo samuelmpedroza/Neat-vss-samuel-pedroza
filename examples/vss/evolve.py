@@ -231,7 +231,7 @@ def run():
                 best_scores.append(score)
                 avg_score = sum(best_scores) / len(best_scores)
    
-                if score < -0.1:
+                if score < 500:
                     solved = False
                     break
             for n, g in enumerate(best_genomes):
