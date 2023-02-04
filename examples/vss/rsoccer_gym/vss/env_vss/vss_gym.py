@@ -139,12 +139,12 @@ class VSSEnv(VSSBaseEnv):
         for i in range(1, self.n_robots_blue):
             actions = self.ou_actions[i].sample()
             self.actions[i] = actions
-            v_wheel0, v_wheel1 = self._actions_to_v_wheels(actions)
+            v_wheel0, v_wheel1 = 0,0
             commands.append(Robot(yellow=False, id=i, v_wheel0=v_wheel0,
                                   v_wheel1=v_wheel1))
         for i in range(self.n_robots_yellow):
             actions = self.ou_actions[self.n_robots_blue+i].sample()
-            v_wheel0, v_wheel1 = self._actions_to_v_wheels(actions)
+            v_wheel0, v_wheel1 = 0,0
             commands.append(Robot(yellow=True, id=i, v_wheel0=v_wheel0,
                                   v_wheel1=v_wheel1))
 
@@ -188,6 +188,7 @@ class VSSEnv(VSSBaseEnv):
         )
         
         # Check if robot is less than 0.2m from ball
+        reward = 0
         if dist_robot_ball < 0.2:
             reward = 1
         goal = False
