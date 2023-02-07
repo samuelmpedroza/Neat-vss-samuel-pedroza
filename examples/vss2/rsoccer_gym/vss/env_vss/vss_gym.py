@@ -12,8 +12,6 @@ from rsoccer_gym.Utils import KDTree
 
 class VSSEnv(VSSBaseEnv):
     """This environment controls a single robot in a VSS soccer League 3v3 match 
-
-
         Description:
         Observation:
             Type: Box(40)
@@ -69,8 +67,6 @@ class VSSEnv(VSSBaseEnv):
         self.v_wheel_deadzone = 0.05
 
         self.ou_actions = []
-        self.kicks = 0
-        self.distancePoints = 0
         for i in range(self.n_robots_blue + self.n_robots_yellow):
             self.ou_actions.append(
                 OrnsteinUhlenbeckAction(self.action_space, dt=self.time_step)
@@ -89,8 +85,6 @@ class VSSEnv(VSSBaseEnv):
 
     def step(self, action):
         observation, reward, done, _ = super().step(action)
-        if(done or self.steps == 1199):
-            reward = self.kicks * 2 * 10000 + self.distancePoints * 1000
         return observation, reward, done, self.reward_shaping_total
 
     def _frame_to_observations(self):
@@ -139,12 +133,12 @@ class VSSEnv(VSSBaseEnv):
         for i in range(1, self.n_robots_blue):
             actions = self.ou_actions[i].sample()
             self.actions[i] = actions
-            v_wheel0, v_wheel1 = self._actions_to_v_wheels(actions)
+            v_wheel0, v_wheel1 = 0,0
             commands.append(Robot(yellow=False, id=i, v_wheel0=v_wheel0,
                                   v_wheel1=v_wheel1))
         for i in range(self.n_robots_yellow):
             actions = self.ou_actions[self.n_robots_blue+i].sample()
-            v_wheel0, v_wheel1 = self._actions_to_v_wheels(actions)
+            v_wheel0, v_wheel1 = 0,0
             commands.append(Robot(yellow=True, id=i, v_wheel0=v_wheel0,
                                   v_wheel1=v_wheel1))
 
@@ -153,8 +147,10 @@ class VSSEnv(VSSBaseEnv):
     def _calculate_reward_and_done(self):
         reward = 0
         goal = False
-        wBallDistanceToOpponentGoal = 100000
-        ballDistanceToOpponentGoal = 0
+        w_move = 0.2
+        w_stopped = 0.5
+        w_ball_grad = 0.8
+        w_energy = 2e-4
         if self.reward_shaping_total is None:
             self.reward_shaping_total = {'goal_score': 0, 'move': 0,
                                          'ball_grad': 0, 'energy': 0,
@@ -172,35 +168,43 @@ class VSSEnv(VSSBaseEnv):
             reward = -10
             goal = True
         else:
-            self.nearestRobot()
-            distanceToBall = self.distanceToBall(self.frame.robots_blue[0])
-            self.numberOfKicks(distanceToBall)
-            ballDistanceToOpponentGoal = self.distanceToOpponentGoal()
+
+            if self.last_frame is not None:
+                # Calculate ball potential
+                grad_ball_potential = self.__ball_grad()
+                # Calculate Move ball
+                move_reward = self.__move_reward()
+                # Calculate Energy penalty
+                energy_penalty = self.__energy_penalty()
+                # Check if robot is stopped
+                stoped_penalty = self.__stopped_penalty()
+
+                reward = w_move * move_reward + \
+                    w_ball_grad * grad_ball_potential + \
+                    w_energy * energy_penalty + \
+                    w_stopped * stoped_penalty
+
+                self.reward_shaping_total['move'] += w_move * move_reward
+                self.reward_shaping_total['ball_grad'] += w_ball_grad \
+                    * grad_ball_potential
+                self.reward_shaping_total['energy'] += w_energy \
+                    * energy_penalty
+        reward = 0
+
+        ball = self.frame.ball
+        robot = self.frame.robots_blue[0]
         
-        reward = ballDistanceToOpponentGoal * wBallDistanceToOpponentGoal
-
-
-        #     if self.last_frame is not None:
-        #         # Calculate ball potential
-        #         grad_ball_potential = self.__ball_grad()
-        #         # Calculate Move ball
-        #         move_reward = self.__move_reward()
-        #         # Calculate Energy penalty
-        #         energy_penalty = self.__energy_penalty()
-        #         # Check if robot is stopped
-        #         stoped_penalty = self.__stopped_penalty()
-
-        #         reward = w_move * move_reward + \
-        #             w_ball_grad * grad_ball_potential + \
-        #             w_energy * energy_penalty + \
-        #             w_stopped * stoped_penalty
-
-        #         self.reward_shaping_total['move'] += w_move * move_reward
-        #         self.reward_shaping_total['ball_grad'] += w_ball_grad \
-        #             * grad_ball_potential
-        #         self.reward_shaping_total['energy'] += w_energy \
-        #             * energy_penalty
-
+        dist_robot_ball = np.linalg.norm(
+            np.array([ball.x, ball.y]) 
+            - np.array([robot.x, robot.y])
+        )
+        
+        # Check if robot is less than 0.2m from ball
+        if dist_robot_ball < 0.2:
+            reward = 1
+        goal = False
+        if reward == 1:
+            goal = True
         return reward, goal
 
     def _get_initial_positions_frame(self):
@@ -292,12 +296,11 @@ class VSSEnv(VSSBaseEnv):
                                           -5.0, 5.0)
 
         self.previous_ball_potential = ball_potential
-        grad_ball_potential = 0
+
         return grad_ball_potential
 
     def __move_reward(self):
         '''Calculate Move to ball reward
-
         Cosine between the robot vel vector and the vector robot -> ball.
         This indicates rather the robot is moving towards the ball or not.
         '''
@@ -313,65 +316,26 @@ class VSSEnv(VSSBaseEnv):
         move_reward = np.dot(robot_ball, robot_vel)
 
         move_reward = np.clip(move_reward / 0.4, -5.0, 5.0)
-        
         return move_reward
 
     def __stopped_penalty(self):
         '''Calculate Move to ball reward
-
         Cosine between the robot vel vector and the vector robot -> ball.
         This indicates rather the robot is moving towards the ball or not.
         '''
-        if(self.last_four_frame is not None):
-            robot_vel = np.array([self.frame.robots_blue[0].v_wheel0,
-                              self.frame.robots_blue[0].v_wheel1])
 
-            last_robot_vel = np.array([self.last_frame.robots_blue[0].v_wheel0,
-                              self.last_frame.robots_blue[0].v_wheel1])
+        robot_vel = np.array([self.frame.robots_blue[0].v_x,
+                              self.frame.robots_blue[0].v_y])
         
-            last_one_robot_vel = np.array([self.last_one_frame.robots_blue[0].v_wheel0,
-                              self.last_one_frame.robots_blue[0].v_wheel1])
+        last_robot_vel = np.array([self.last_frame.robots_blue[0].v_x,
+                              self.last_frame.robots_blue[0].v_y])
         
-            last_two_robot_vel = np.array([self.last_two_frame.robots_blue[0].v_wheel0,
-                              self.last_two_frame.robots_blue[0].v_wheel1])
+        robot_speed = abs(robot_vel[0] - last_robot_vel[0]) + abs(robot_vel[1] - last_robot_vel[1])
+        stopped = 0
+        if robot_speed == 0:
+            stopped = -100
         
-            last_three_robot_vel = np.array([self.last_three_frame.robots_blue[0].v_wheel0,
-                              self.last_three_frame.robots_blue[0].v_wheel1])
-        
-            last_four_robot_vel = np.array([self.last_four_frame.robots_blue[0].v_wheel0,
-                              self.last_four_frame.robots_blue[0].v_wheel1])
-
-            xSpeedArray = [robot_vel[0], 
-                last_robot_vel[0], 
-                last_one_robot_vel[0], 
-                last_two_robot_vel[0], 
-                last_three_robot_vel[0],
-                last_four_robot_vel[0]
-                ]
-
-            ySpeedArray = [robot_vel[1], 
-                last_robot_vel[1], 
-                last_one_robot_vel[1], 
-                last_two_robot_vel[1], 
-                last_three_robot_vel[1],
-                last_four_robot_vel[1]
-                ]
-        
-            stopped = 0
-            # print('nova função', self._check(xSpeedArray, 0))
-            checkX = all(x == 0 for x in xSpeedArray)
-            checkY = all(x == 0 for x in ySpeedArray)
-            if(checkX or checkY):
-                stopped = -100
-
-            stopped = 0
-            return stopped
-        else: 
-            return 0
-        # robot_speed = abs(robot_vel[0] - last_robot_vel[0]) + abs(robot_vel[1] - last_robot_vel[1])
-        
-        # if robot_speed == 0:
-        
+        return stopped
 
     def __energy_penalty(self):
         '''Calculates the energy penalty'''
@@ -380,34 +344,3 @@ class VSSEnv(VSSBaseEnv):
         en_penalty_2 = abs(self.sent_commands[0].v_wheel1)
         energy_penalty = - (en_penalty_1 + en_penalty_2)
         return 0
-    
-    def nearestRobot(self):
-        distances = []
-        result = 1
-        
-        for i in self.frame.robots_blue:
-            distances.append(self.distanceToBall(self.frame.robots_blue[i]))
-        for i in self.frame.robots_yellow:
-            distances.append(self.distanceToBall(self.frame.robots_blue[i]))
-
-        first = distances[0]
-        for j in distances:
-            if j < first:
-                result = 0
-        return result
-                
-    def distanceToBall(self, robot):
-        ball = np.array([self.frame.ball.x, self.frame.ball.y])
-        robot = np.array([robot.x, robot.y])
-        return math.sqrt(((ball[0] - robot[0]) ** 2) + ((ball[1] - robot[1]) ** 2))
-    
-    def numberOfKicks(self, distance):
-        if (distance < 0.005):
-           self.kicks = self.kicks + 1
-    
-    def distanceToOpponentGoal(self):
-        goalPosition = np.array([self.field.length, self.field.width])
-        robot = np.array([self.frame.robots_blue[0].x,
-                  self.frame.robots_blue[0].y])
-        return 1/math.sqrt(((goalPosition[0] - robot[0]) ** 2) + ((goalPosition[1] - robot[1]) ** 2))
-
